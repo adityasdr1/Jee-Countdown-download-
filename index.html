@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Application | Dream IIT Collaboration</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .collab-tag {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .collab-tag span {
+            color: var(--accent);
+        }
+
+        /* Main Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .logo-wrapper {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 24px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .app-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Info Section & Social Grid */
+        .details-section {
+            background-color: var(--bg-light);
+            padding: 60px 10%;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .details-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .info-block {
+            flex: 1;
+        }
+
+        .info-block h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .info-block p {
+            color: var(--text-light);
+        }
+
+        .team-grid {
+            display: flex;
+            gap: 20px;
+        }
+
+        .team-card {
+            background: #ffffff;
+            padding: 20px 24px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+            min-width: 200px;
+        }
+
+        .role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .instagram-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Handling */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 5%;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 5%;
+                gap: 30px;
+            }
+            .logo-wrapper {
+                margin: 0 auto 24px;
+            }
+            .details-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .team-grid {
+                width: 100%;
+                flex-direction: column;
+            }
+            .details-section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header bar -->
+    <header>
+        <div class="collab-tag">
+            In Collaboration with <span>Dream IIT</span>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="hero">
+        <div class="hero-content">
+            <!-- App Logo Placeholder -->
+            <div class="logo.png">
+                <img src="logo.png" alt="Application Logo" class="logo.png">
+            </div>
+            
+            <h1>Countdown Application</h1>
+            <p class="description">
+                Optimize your study routines, manage critical deadlines, and accelerate your preparation track with precision tools designed for success.
+            </p>
+            
+            <!-- APK Download Link Placeholder -->
+            <a href="countdown-app.apk" download class="btn-download">
+                Download Application (APK)
+            </a>
+        </div>
+    </main>
+
+    <!-- Professional Footer / Contact Section -->
+    <section class="details-section">
+        <div class="details-container">
+            <div class="info-block">
+                <h2>About the Initiative</h2>
+                <p>A tailored management solution engineered in collaboration with Dream IIT to assist students in hitting milestones effectively.</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Admin Card -->
+                <div class="team-card">
+                    <p class="role">Community Administration</p>
+                    <p class="name">Admin Team</p>
+                    <!-- Replace Handle Placeholder -->
+                    <a href="https://instagram.com/rayyan.67501" target="_blank" class="instagram-link">
+                        Instagram &rarr;
+                    </a>
+                </div>
+
+                <!-- Developer Card -->
+                <div class="team-card">
+                    <p class="role">Development</p>
+                    <p class="name">Developer Team</p>
+                    <!-- Replace Handle Placeholder -->
+                    <a href="https://instagram.com/aditya.0ff" target="_blank" class="instagram-link">
+                        Instagram &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
