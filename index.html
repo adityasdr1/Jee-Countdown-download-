@@ -3,257 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Application | Dream IIT Collaboration</title>
+    <title>Countdown Application</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --text-main: #1e293b;
-            --text-light: #64748b;
-            --bg-light: #f8fafc;
+            --google-sans: 'Google Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --roboto: 'Roboto', system-ui, -apple-system, sans-serif;
+            --play-green: #01875f; 
+            --play-green-hover: #006e4e;
+            --text-dark: #202124;
+            --text-medium: #5f6368;
+            --text-light: #70757a;
+            --border-color: #dadce0;
+            --bg-light: #f8f9fa;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            color: var(--text-main);
+            font-family: var(--roboto);
+            color: var(--text-dark);
             background-color: #ffffff;
-            line-height: 1.6;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation Header */
+        /* Top Navigation Header bar mimicking Play Store Web layout */
         header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
-            border-bottom: 1px solid #e2e8f0;
+            justify-content: space-between;
+            padding: 14px 6%;
+            border-bottom: 1px solid var(--border-color);
+            background: #fff;
         }
 
-        .collab-tag {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .collab-tag span {
-            color: var(--accent);
-        }
-
-        /* Main Hero Section */
-        .hero {
+        .play-logo-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 80px 10% 40px 10%;
-            max-width: 1200px;
+            gap: 8px;
+            font-family: var(--google-sans);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .play-logo-container span {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .collab-badge {
+            font-family: var(--google-sans);
+            font-size: 0.85rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .collab-badge strong {
+            color: #1a73e8;
+        }
+
+        /* Hero Container */
+        .main-container {
+            max-width: 1060px;
             margin: 0 auto;
-            gap: 50px;
+            padding: 40px 24px;
         }
 
-        .hero-content {
-            flex: 1;
+        .app-hero {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+            margin-bottom: 32px;
         }
 
-        /* Compact Logo Wrapper */
-        .logo-wrapper {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 20px;
-            border-radius: 14px;
+        .logo-box {
+            width: 124px;
+            height: 124px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            flex-shrink: 0;
+            background: var(--bg-light);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .app-logo {
+        .logo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            color: var(--primary);
+        .app-info-panel h1 {
+            font-family: var(--google-sans);
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: var(--text-dark);
             line-height: 1.2;
-            margin-bottom: 16px;
+            margin-bottom: 6px;
         }
 
-        .description {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            max-width: 540px;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--accent);
-            color: white;
+        .developer-link {
+            font-family: var(--google-sans);
+            font-size: 1.05rem;
+            color: var(--play-green);
             text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: background-color 0.2s ease;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 4px;
         }
 
-        .btn-download:hover {
-            background-color: var(--accent-hover);
+        .developer-link:hover {
+            text-decoration: underline;
         }
 
-        /* Responsive Video Guide Section */
-        .video-section {
-            max-width: 800px;
-            margin: 40px auto 80px auto;
-            padding: 0 5%;
-            text-align: center;
-        }
-
-        .video-section h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .video-section p {
+        .contains-ads {
+            font-size: 0.75rem;
             color: var(--text-light);
             margin-bottom: 24px;
         }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-            background: #000;
+        /* Play Store Primary CTA */
+        .action-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
-        .video-container iframe {
+        .btn-play-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--play-green);
+            color: #ffffff;
+            font-family: var(--google-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 32px;
+            border-radius: 8px;
+            transition: background-color 0.15s ease;
+            min-height: 40px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn-play-primary:hover {
+            background-color: var(--play-green-hover);
+        }
+
+        /* Play Store Core Grid Metadata Values */
+        .metadata-strip {
+            display: flex;
+            align-items: center;
+            margin: 32px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8eaed;
+            gap: 0;
+        }
+
+        .meta-metric {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 8px;
+        }
+
+        .meta-metric:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background-color: #e8eaed;
+        }
+
+        .metric-top {
+            font-family: var(--google-sans);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 27px;
+        }
+
+        .metric-sub {
+            font-size: 0.75rem;
+            color: var(--text-medium);
+            margin-top: 4px;
+        }
+
+        .star-icon {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .pegi-box {
+            border: 1px solid var(--text-dark);
+            padding: 1px 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        /* Horizontal App Screenshot Track */
+        .screenshot-viewport {
+            width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            margin-bottom: 40px;
+            padding-bottom: 8px;
+        }
+
+        .screenshot-viewport::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot-track {
+            display: flex;
+            gap: 12px;
+            width: max-content;
+        }
+
+        .screenshot-track img {
+            height: 340px;
+            width: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            object-fit: contain;
+            background: #fff;
+        }
+
+        /* Layout Columns mirroring modern Google Play App Listing */
+        .content-split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            font-family: var(--google-sans);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-header .arrow-btn {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 1.25rem;
+        }
+
+        .about-text {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .category-pill {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            color: var(--text-medium);
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .category-pill:hover {
+            background: var(--bg-light);
+        }
+
+        /* Sidebar Info block elements */
+        .sidebar-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-row .field-label {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            font-weight: 400;
+        }
+
+        .info-row .field-value {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .info-row a {
+            color: var(--play-green);
+            text-decoration: none;
+        }
+
+        /* Native Look Video Section */
+        .video-card-section {
+            margin: 16px 0 48px 0;
+            border-top: 1px solid #e8eaed;
+            padding-top: 32px;
+        }
+
+        .video-frame-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: #000;
+        }
+
+        .video-frame-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
         }
 
-        /* Info Section & Social Grid */
-        .details-section {
+        /* Play Store Structured Reviews Architecture */
+        .reviews-section {
+            border-top: 1px solid #e8eaed;
+            padding-top: 32px;
+            margin-bottom: 48px;
+        }
+
+        .rating-dashboard {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .big-rating-num {
+            font-family: var(--google-sans);
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .big-rating-stars {
+            color: var(--play-green);
+            font-size: 1.1rem;
+            margin: 6px 0;
+        }
+
+        .total-reviews-count {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .histogram-container {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .histogram-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: var(--text-medium);
+        }
+
+        .histogram-row .label-num {
+            width: 8px;
+            text-align: right;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 8px;
+            background-color: #e8eaed;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background-color: var(--play-green);
+            border-radius: 4px;
+        }
+
+        /* Individual User Comments Card Grid mapping */
+        .review-cards-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .review-card {
+            background: #fff;
+        }
+
+        .review-user-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .user-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar-placeholder {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #e8eaed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-size: 0.85rem;
+        }
+
+        .profile-name {
+            font-family: var(--google-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .review-rating-stars {
+            font-size: 0.75rem;
+            color: var(--play-green);
+            margin-bottom: 6px;
+        }
+
+        .review-body-text {
+            color: var(--text-medium);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        /* Institutional/Developer Footer section block */
+        footer {
             background-color: var(--bg-light);
-            padding: 60px 10%;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
+            padding: 48px 6%;
+            margin-top: 60px;
         }
 
-        .details-container {
-            max-width: 1200px;
+        .footer-grid {
+            max-width: 1060px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             gap: 40px;
+            flex-wrap: wrap;
         }
 
-        .info-block {
-            flex: 1;
+        .footer-brand-side h2 {
+            font-family: var(--google-sans);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
         }
 
-        .info-block h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 12px;
+        .footer-brand-side p {
+            color: var(--text-medium);
+            font-size: 0.88rem;
+            max-width: 450px;
         }
 
-        .info-block p {
-            color: var(--text-light);
-        }
-
-        .team-grid {
+        .footer-links-side {
             display: flex;
-            gap: 20px;
+            gap: 16px;
         }
 
-        .team-card {
+        .profile-badge-card {
             background: #ffffff;
-            padding: 20px 24px;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            text-align: left;
-            min-width: 200px;
+            padding: 16px;
+            min-width: 220px;
         }
 
-        .role {
-            font-size: 0.8rem;
+        .profile-badge-card .role-title {
+            font-size: 0.7rem;
             text-transform: uppercase;
+            letter-spacing: 0.8px;
             color: var(--text-light);
-            letter-spacing: 0.5px;
+            font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
+        .profile-badge-card .team-member-name {
+            font-family: var(--google-sans);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-dark);
             margin-bottom: 12px;
         }
 
-        .instagram-link {
+        .profile-badge-card a {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            color: var(--accent);
+            font-size: 0.85rem;
+            color: #01875f;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        .instagram-link:hover {
+        .profile-badge-card a:hover {
             text-decoration: underline;
         }
 
-        /* Responsive Handling */
-        @media (max-width: 768px) {
-            header {
-                padding: 20px 5%;
-            }
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 5% 20px 5%;
-                gap: 30px;
-            }
-            .logo-wrapper {
-                margin: 0 auto 24px;
-            }
-            .video-section {
-                margin: 20px auto 60px auto;
-            }
-            .video-section h2 {
-                font-size: 1.5rem;
-            }
-            .details-container {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .team-grid {
-                width: 100%;
-                flex-direction: column;
-            }
-            .details-section {
-                padding: 40px 5%;
-            }
+        /* Layout Responsiveness Adaptations */
+        @media (max-width: 840px) {
+            header { padding: 14px 4%; }
+            .main-container { padding: 24px 16px; }
+            .content-split { grid-template-columns: 1fr; gap: 36px; }
+            .rating-dashboard { gap: 24px; flex-direction: column; align-items: flex-start; }
+            .histogram-container { width: 100%; }
+            footer { padding: 36px 4%; }
+            .footer-grid { flex-direction: column; gap: 32px; }
+            .footer-links-side { width: 100%; flex-direction: column; gap: 12px; }
+            .profile-badge-card { min-width: 100%; }
         }
     </style>
 </head>
@@ -261,74 +579,225 @@
 
     <!-- Header bar -->
     <header>
-        <div class="collab-tag">
-            In Collaboration with <span>Dream IIT</span>
+        <div class="play-logo-container">
+            Aditya Shukla<span>apps</span>
+        </div>
+        <div class="collab-badge">
+            In collaboration with <strong>Dream IIT</strong>
         </div>
     </header>
 
-    <!-- Main Section -->
-    <main class="hero">
-        <div class="hero-content">
-            <div class="logo-wrapper">
-                <img src="logo.png" alt="Application Logo" class="app-logo">
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="app-hero">
+            <div class="logo-box">
+                <img src="logo.png" alt="Countdown Application icon">
             </div>
-            
-            <h1>Countdown Application</h1>
-            <p class="description">
-                Optimize your study routines, manage critical deadlines, and accelerate your preparation track with precision tools designed for success.
-            </p>
-            
-            <!-- Download button -->
-            <a href="https://apk.e-droid.net/apk/app4035567-c4baun.apk?v=3" target="_blank" class="btn-download">
-                Download Application (APK)
-            </a>
-        </div>
-    </main>
+            <div class="app-info-panel">
+                <h1>Countdown Application</h1>
+                <a href="https://instagram.com/aditya.0ff" target="_blank" class="developer-link">Aditya Shukla</a>
+                <p class="contains-ads">Contains ads &bull; In-app purchases</p>
+                
+                <div class="action-row">
+                    <a href="https://apk.e-droid.net/apk/app4035567-c4baun.apk?v=3" target="_blank" class="btn-play-primary">
+                        Install
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Interactive Video Guide Section -->
-    <section class="video-section">
-        <h2>Video Setup Guide</h2>
-        <p>Watch this quick step-by-step video to see how to download, install, and configure your Countdown application.</p>
-        <div class="video-container">
-            <!-- Converted YouTube link to standard embed format for web playback -->
-            <iframe 
-                src="https://www.youtube.com/embed/UZm75RElHg4" 
-                title="Countdown App Download and Setup Guide" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
+        <!-- Stats Section -->
+        <section class="metadata-strip">
+            <div class="meta-metric">
+                <div class="metric-top">3.9 <span class="star-icon">&#9733;</span></div>
+                <div class="metric-sub">24 reviews</div>
+            </div>
+            <div class="meta-metric">
+                <div class="metric-top">33 MB</div>
+                <div class="metric-sub">Download size</div>
+            </div>
+            <div class="meta-metric">
+                <div class="metric-top"><span class="pegi-box">3+</span></div>
+                <div class="metric-sub">Rated for 3+</div>
+            </div>
+            <div class="meta-metric">
+                <div class="metric-top">24+</div>
+                <div class="metric-sub">Downloads</div>
+            </div>
+        </section>
 
-    <!-- Professional Footer / Contact Section -->
-    <section class="details-section">
-        <div class="details-container">
-            <div class="info-block">
+        <!-- Screenshot Gallery -->
+        <div class="screenshot-viewport">
+            <div class="screenshot-track">
+                <img src="https://image.ashlynn.workers.dev/epoxqdzhhfmqrtyyogxwfcplkehsgokf" alt="App Screenshot 1">
+                <img src="https://image.ashlynn.workers.dev/zgnplomhgdzpzkhvalpwcgtmlilnotec" alt="App Screenshot 2">
+                <img src="https://image.ashlynn.workers.dev/iemjjmsxdqfzkxntjdcmgehjnaazdsep" alt="App Screenshot 3">
+                <img src="https://image.ashlynn.workers.dev/bdspwmceweidnchrxybkceogtzjqjnog" alt="App Screenshot 4">
+                <img src="https://image.ashlynn.workers.dev/zthtwagqitaoaqfhxgplwdbvoswcmcwz" alt="App Screenshot 5">
+            </div>
+        </div>
+
+        <!-- Main Splits Body Content Zone -->
+        <div class="content-split">
+            <div class="primary-left-block">
+                
+                <div class="section-header">
+                    <h2>About this app</h2>
+                    <a href="#" class="arrow-btn">&rarr;</a>
+                </div>
+                <p class="about-text">
+                    Engineered specifically for competitive aspirants, the Countdown Application provides clean visual countdown trackers, target milestones, and minimalist micro-schedules to keep you fully optimized for exam tracks like IIT-JEE. Eliminate distractions and track your readiness down to the precise second. Take complete control over daily study routines, optimize revision parameters with clean timelines, and eliminate interface friction with minimalist architecture tailored explicitly for deep learning cycles.
+                </p>
+
+                <div class="pill-container">
+                    <a href="#" class="category-pill">Productivity</a>
+                    <a href="#" class="category-pill">Education</a>
+                    <a href="#" class="category-pill">Exam Preparation</a>
+                    <a href="#" class="category-pill">Study Tracker</a>
+                </div>
+
+                <!-- Video Guide Section -->
+                <div class="video-card-section">
+                    <div class="section-header">
+                        <h2>Video Setup Guide</h2>
+                    </div>
+                    <p class="about-text" style="margin-bottom:16px;">Watch this brief documentation video demonstrating download initialization, package parsing config, and core metric parameters configuration tracking updates.</p>
+                    <div class="video-frame-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/UZm75RElHg4" 
+                            title="Countdown App Download and Setup Guide" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Ratings and Reviews Section -->
+                <div class="reviews-section">
+                    <div class="section-header">
+                        <h2>Ratings and reviews</h2>
+                        <a href="#" class="arrow-btn">&rarr;</a>
+                    </div>
+                    
+                    <div class="rating-dashboard">
+                        <div>
+                            <div class="big-rating-num">3.9</div>
+                            <div class="big-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                            <div class="total-reviews-count">24 ratings</div>
+                        </div>
+                        <div class="histogram-container">
+                            <div class="histogram-row">
+                                <span class="label-num">5</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 55%;"></div></div>
+                            </div>
+                            <div class="histogram-row">
+                                <span class="label-num">4</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 15%;"></div></div>
+                            </div>
+                            <div class="histogram-row">
+                                <span class="label-num">3</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 10%;"></div></div>
+                            </div>
+                            <div class="histogram-row">
+                                <span class="label-num">2</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 8%;"></div></div>
+                            </div>
+                            <div class="histogram-row">
+                                <span class="label-num">1</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 12%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Individual Public Review Cards -->
+                    <div class="review-cards-layout">
+                        <div class="review-card">
+                            <div class="review-user-header">
+                                <div class="user-meta-info">
+                                    <div class="user-avatar-placeholder">R</div>
+                                    <span class="profile-name">Rahul Sharma</span>
+                                </div>
+                                <span class="review-date">May 14, 2026</span>
+                            </div>
+                            <div class="review-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="review-body-text">thank you brother aditya for this app, i will share this app with my friends.</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-user-header">
+                                <div class="user-meta-info">
+                                    <div class="user-avatar-placeholder">A</div>
+                                    <span class="profile-name">Ananya Patel</span>
+                                </div>
+                                <span class="review-date">May 02, 2026</span>
+                            </div>
+                            <div class="review-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                            <p class="review-body-text">mst app bnaya ho bahi, mst chal raha hai</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar Info Panel -->
+            <div class="sidebar-panel">
+                <div class="section-header" style="margin-bottom:0;">
+                    <h2>App Info</h2>
+                </div>
+                
+                <div class="info-row">
+                    <span class="field-label">Version</span>
+                    <span class="field-value">v1.0.4</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="field-label">Updated on</span>
+                    <span class="field-value">May 2026</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="field-label">Requires Android</span>
+                    <span class="field-value">Android 7.0 and up</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="field-label">Interactive Elements</span>
+                    <span class="field-value">Users Interact</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="field-label">Developer Contact</span>
+                    <span class="field-value">
+                        <a href="https://instagram.com/aditya.0ff" target="_blank">Aditya Shukla Instagram</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand-side">
                 <h2>About the Initiative</h2>
                 <p>A tailored management solution engineered in collaboration with Dream IIT to assist students in hitting milestones effectively.</p>
             </div>
             
-            <div class="team-grid">
-                <!-- Admin Card -->
-                <div class="team-card">
-                    <p class="role">Community Administration</p>
-                    <p class="name">Admin Team</p>
-                    <a href="https://instagram.com/rayyan.67501" target="_blank" class="instagram-link">
-                        Instagram &rarr;
-                    </a>
+            <div class="footer-links-side">
+                <div class="profile-badge-card">
+                    <p class="role-title">Community Administration</p>
+                    <p class="team-member-name">Admin Team</p>
+                    <a href="https://instagram.com/rayyan.67501" target="_blank">Instagram &rarr;</a>
                 </div>
 
-                <!-- Developer Card -->
-                <div class="team-card">
-                    <p class="role">Development</p>
-                    <p class="name">Developer Team</p>
-                    <a href="https://instagram.com/aditya.0ff" target="_blank" class="instagram-link">
-                        Instagram &rarr;
-                    </a>
+                <div class="profile-badge-card">
+                    <p class="role-title">Development</p>
+                    <p class="team-member-name">Developer Team</p>
+                    <a href="https://instagram.com/aditya.0ff" target="_blank">Instagram &rarr;</a>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
 </body>
 </html>
