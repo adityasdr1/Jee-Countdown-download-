@@ -53,7 +53,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 80px 10%;
+            padding: 80px 10% 40px 10%;
             max-width: 1200px;
             margin: 0 auto;
             gap: 50px;
@@ -109,6 +109,45 @@
 
         .btn-download:hover {
             background-color: var(--accent-hover);
+        }
+
+        /* Responsive Video Guide Section */
+        .video-section {
+            max-width: 800px;
+            margin: 40px auto 80px auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .video-section p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* Info Section & Social Grid */
@@ -192,11 +231,17 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 40px 5%;
+                padding: 40px 5% 20px 5%;
                 gap: 30px;
             }
             .logo-wrapper {
                 margin: 0 auto 24px;
+            }
+            .video-section {
+                margin: 20px auto 60px auto;
+            }
+            .video-section h2 {
+                font-size: 1.5rem;
             }
             .details-container {
                 flex-direction: column;
@@ -233,12 +278,27 @@
                 Optimize your study routines, manage critical deadlines, and accelerate your preparation track with precision tools designed for success.
             </p>
             
-            <!-- Updated download button with your specific link -->
+            <!-- Download button -->
             <a href="https://www.upload-apk.com/tkSd9yJ877c19zU" target="_blank" class="btn-download">
                 Download Application (APK)
             </a>
         </div>
     </main>
+
+    <!-- Interactive Video Guide Section -->
+    <section class="video-section">
+        <h2>Video Setup Guide</h2>
+        <p>Watch this quick step-by-step video to see how to download, install, and configure your Countdown application.</p>
+        <div class="video-container">
+            <!-- Converted YouTube link to standard embed format for web playback -->
+            <iframe 
+                src="https://www.youtube.com/embed/UZm75RElHg4" 
+                title="Countdown App Download and Setup Guide" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 
     <!-- Professional Footer / Contact Section -->
     <section class="details-section">
